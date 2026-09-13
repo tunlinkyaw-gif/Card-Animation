@@ -26,3 +26,36 @@
         transform: translate(30px, -50px) scale(1.1);
     }
 }
+
+@keyframes spring {
+    0%, 100% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.08);
+    }
+    50% {
+        transform: scale(0.96);
+    }
+    70% {
+        transform: scale(1.03);
+    }
+}
+
+@keyframes float-up {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes float-down {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
