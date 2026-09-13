@@ -10,10 +10,15 @@
 <body class="relative min-h-screen overflow-hidden bg-[#050810] font-sans text-white antialiased">
   <div
     aria-hidden="true"
-    class="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[linear-gradient(#ffffff06_1px,transparent_1px),linear-gradient(90deg,#ffffff06_1px,transparent_1px)] bg-[size:45px_45px]"
+    class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[linear-gradient(#ffffff06_1px,transparent_1px),linear-gradient(90deg,#ffffff06_1px,transparent_1px)] bg-size-[45px_45px]"
   >
-    <div class="bg-orb bg-orb-teal animate-[drift_18s_ease-in-out_infinite]"></div>
-    <div class="bg-orb bg-orb-indigo animate-[drift_22s_ease-in-out_infinite_reverse]"></div>
+    <div
+      class="absolute top-[5%] left-[10%] size-[340px] rounded-full bg-[#2dd4bf] opacity-[0.18] blur-[90px] animate-[drift_10s_ease-in-out_infinite_alternate]"
+    ></div>
+
+    <div
+      class="absolute right-[10%] bottom-[5%] size-[340px] rounded-full bg-[#818cf8] opacity-[0.18] blur-[90px] animate-[drift_10s_ease-in-out_infinite_alternate] [animation-delay:-5s]"
+    ></div>
   </div>
 
   <main class="relative z-10 flex min-h-screen items-center justify-center p-6 [perspective:1200px]">

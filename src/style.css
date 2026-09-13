@@ -18,52 +18,6 @@
     }
   }
 
-  .bg-orb {
-    position: absolute;
-    width: min(78vw, 820px);
-    height: min(78vw, 820px);
-    border-radius: 50%;
-    pointer-events: none;
-    -webkit-mask-image: radial-gradient(circle at center, #000 46%, transparent 78%);
-    mask-image: radial-gradient(circle at center, #000 46%, transparent 78%);
-}
-
-.bg-orb-teal {
-    top: -12%;
-    left: -6%;
-    background:
-        repeating-radial-gradient(
-            circle at center,
-            rgba(34, 140, 132, 0.22) 0 2px,
-            transparent 2px 28px
-        ),
-        radial-gradient(
-            circle at center,
-            rgba(12, 72, 70, 0.78) 0%,
-            rgba(8, 48, 52, 0.48) 34%,
-            rgba(5, 24, 32, 0.18) 58%,
-            transparent 74%
-        );
-}
-
-.bg-orb-indigo {
-    right: -8%;
-    bottom: -16%;
-    background:
-        repeating-radial-gradient(
-            circle at center,
-            rgba(72, 88, 148, 0.22) 0 2px,
-            transparent 2px 28px
-        ),
-        radial-gradient(
-            circle at center,
-            rgba(24, 32, 72, 0.82) 0%,
-            rgba(16, 22, 52, 0.46) 36%,
-            rgba(8, 12, 32, 0.16) 58%,
-            transparent 74%
-        );
-}
-
 @keyframes drift {
     0%, 100% {
         transform: translateY(0);
