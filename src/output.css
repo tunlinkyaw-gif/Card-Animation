@@ -263,6 +263,9 @@
   .top-3 {
     top: calc(var(--spacing) * 3);
   }
+  .top-\[-8\%\] {
+    top: -8%;
+  }
   .top-\[5\%\] {
     top: 5%;
   }
@@ -280,6 +283,9 @@
   }
   .right-6 {
     right: calc(var(--spacing) * 6);
+  }
+  .right-\[2\%\] {
+    right: 2%;
   }
   .right-\[10\%\] {
     right: 10%;
@@ -302,6 +308,9 @@
   .bottom-6 {
     bottom: calc(var(--spacing) * 6);
   }
+  .bottom-\[-10\%\] {
+    bottom: -10%;
+  }
   .bottom-\[5\%\] {
     bottom: 5%;
   }
@@ -313,6 +322,9 @@
   }
   .left-1\/2 {
     left: calc(1 / 2 * 100%);
+  }
+  .left-\[2\%\] {
+    left: 2%;
   }
   .left-\[10\%\] {
     left: 10%;
@@ -475,6 +487,10 @@
   .size-\[340px\] {
     width: 340px;
     height: 340px;
+  }
+  .size-\[520px\] {
+    width: 520px;
+    height: 520px;
   }
   .size-full {
     width: 100%;
@@ -640,6 +656,12 @@
   }
   .animate-\[drift_10s_ease-in-out_infinite_alternate\] {
     animation: drift 10s ease-in-out infinite alternate;
+  }
+  .animate-\[drift_18s_ease-in-out_infinite\] {
+    animation: drift 18s ease-in-out infinite;
+  }
+  .animate-\[drift_22s_ease-in-out_infinite_reverse\] {
+    animation: drift 22s ease-in-out infinite reverse;
   }
   .animate-\[float-down_2\.6s_ease-in-out_infinite\] {
     animation: float-down 2.6s ease-in-out infinite;
@@ -892,6 +914,9 @@
   }
   .bg-\[\#818cf8\] {
     background-color: #818cf8;
+  }
+  .bg-\[\#6366f1\] {
+    background-color: #6366f1;
   }
   .bg-\[\#07111d\] {
     background-color: #07111d;
@@ -1348,6 +1373,9 @@
   .opacity-\[0\.18\] {
     opacity: 0.18;
   }
+  .opacity-\[0\.22\] {
+    opacity: 0.22;
+  }
   .mix-blend-overlay {
     mix-blend-mode: overlay;
   }
@@ -1466,6 +1494,10 @@
   }
   .blur-\[100px\] {
     --tw-blur: blur(100px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .blur-\[110px\] {
+    --tw-blur: blur(110px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .backdrop-blur-md {

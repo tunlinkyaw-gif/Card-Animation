@@ -19,11 +19,11 @@
   }
 
   @keyframes drift {
-    0% {
-        transform: translate(0px, 0px) scale(1);
+    0%, 100% {
+        transform: translateY(0);
     }
-    100% {
-        transform: translate(30px, -50px) scale(1.1);
+    50% {
+        transform: translateY(-90px);
     }
 }
 
@@ -64,16 +64,18 @@
     --rx: 0deg;
     --ry: 0deg;
     --sc: 1;
-    transform-style: preserve-3d;
+    overflow: hidden;
+    border-radius: 2rem;
+    isolation: isolate;
+    clip-path: inset(0 round 2rem);
     transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--sc));
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
 }
 
 .profile-card.is-hovering {
     --sc: 1.05;
-    transition: transform 0.12s ease-out, box-shadow 0.3s ease;
-    box-shadow: 0 30px 80px rgba(45, 212, 191, 0.18);
+    transition: transform 0.12s ease-out;
 }
 
 .profile-card.is-pressed {
