@@ -71,6 +71,7 @@
     transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--sc));
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
+    touch-action: pan-y;
 }
 
 .profile-card.is-hovering {
@@ -89,4 +90,26 @@
         rgba(255, 255, 255, 0.16),
         transparent 42%
     );
+}
+
+@media (hover: none) {
+    .profile-card {
+        transition-duration: 0.35s;
+    }
+
+    .profile-card.is-hovering {
+        --sc: 1.02;
+    }
+}
+
+@media (max-width: 380px) {
+    .profile-card {
+        border-radius: 1.5rem;
+    }
+
+    .profile-card > div,
+    .profile-card .card-shine,
+    .profile-card .relative.z-10 {
+        border-radius: 1.5rem;
+    }
 }

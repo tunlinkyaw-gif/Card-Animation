@@ -7,7 +7,7 @@
   <link href="src/style.css" rel="stylesheet">
   <title>Htun Lin | Creative Developer</title>
 </head>
-<body class="relative min-h-screen overflow-hidden bg-[#050810] font-sans text-white antialiased">
+<body class="relative min-h-screen overflow-x-hidden bg-[#050810] font-sans text-white antialiased">
   <div
     aria-hidden="true"
     class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[linear-gradient(#ffffff06_1px,transparent_1px),linear-gradient(90deg,#ffffff06_1px,transparent_1px)] bg-size-[45px_45px]"
@@ -21,8 +21,8 @@
     ></div>
   </div>
 
-  <main class="relative z-10 flex min-h-screen items-center justify-center p-6 [perspective:1200px]">
-    <article id="profile-card" class="profile-card relative w-full max-w-[360px] cursor-pointer overflow-hidden rounded-[2rem]">
+  <main class="relative z-10 flex min-h-[100svh] items-center justify-center px-4 py-8 [perspective:1200px] sm:p-6">
+    <article id="profile-card" class="profile-card relative w-full max-w-[360px] cursor-pointer overflow-hidden rounded-[2rem]" tabindex="0" aria-label="Interactive profile card. Tap or drag to explore.">
       <div class="relative overflow-hidden rounded-[2rem] p-[1.5px]">
         <div class="card-shine pointer-events-none absolute inset-0 z-20 rounded-[2rem] opacity-0 mix-blend-overlay transition-opacity duration-300"></div>
         <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2rem]">
@@ -101,7 +101,7 @@
             </svg>
           </a>
 
-          <p class="mt-6 text-[10px] tracking-[0.18em] text-slate-500 uppercase">Designed with curiosity</p>
+          <p class="mt-6 text-center text-[10px] tracking-[0.18em] text-slate-500 uppercase">Tap or drag to explore</p>
         </div>
       </div>
     </article>
@@ -110,7 +110,10 @@
     const card = document.getElementById("profile-card");
     const shine = card.querySelector(".card-shine");
 
-    card.addEventListener("mousemove", (event) => {
+    let activePointerId = null;
+    let resetTimer;
+
+    function updateCard(event) {
       const rect = card.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
@@ -121,17 +124,41 @@
       card.style.setProperty("--my", `${y * 100}%`);
       card.classList.add("is-hovering");
       shine.style.opacity = "1";
-    });
+    }
 
-    card.addEventListener("mouseleave", () => {
+    function resetCard() {
       card.style.setProperty("--rx", "0deg");
       card.style.setProperty("--ry", "0deg");
       card.classList.remove("is-hovering", "is-pressed");
       shine.style.opacity = "0";
+    }
+
+    card.addEventListener("pointermove", updateCard);
+    card.addEventListener("pointerdown", (event) => {
+      activePointerId = event.pointerId;
+      clearTimeout(resetTimer);
+      card.classList.add("is-pressed");
+      card.setPointerCapture(event.pointerId);
+      updateCard(event);
     });
 
-    card.addEventListener("mousedown", () => card.classList.add("is-pressed"));
-    card.addEventListener("mouseup", () => card.classList.remove("is-pressed"));
+    card.addEventListener("pointerup", (event) => {
+      if (event.pointerId !== activePointerId) return;
+      activePointerId = null;
+      card.classList.remove("is-pressed");
+      // Keep the touch feedback visible briefly so a tap feels intentional.
+      if (event.pointerType === "touch") {
+        resetTimer = setTimeout(resetCard, 850);
+      }
+      card.releasePointerCapture(event.pointerId);
+    });
+
+    card.addEventListener("pointercancel", resetCard);
+    card.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse") resetCard();
+    });
+
+    card.addEventListener("blur", resetCard);
   </script>
 </body>
 </html>
