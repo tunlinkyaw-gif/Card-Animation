@@ -635,6 +635,9 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
+  .animate-\[card-float_8s_ease-in-out_infinite\] {
+    animation: card-float 8s ease-in-out infinite;
+  }
   .animate-\[drift_10s_ease-in-out_infinite_alternate\] {
     animation: drift 10s ease-in-out infinite alternate;
   }
@@ -1333,6 +1336,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  .opacity-0 {
+    opacity: 0%;
+  }
   .opacity-75 {
     opacity: 75%;
   }
@@ -1341,6 +1347,9 @@
   }
   .opacity-\[0\.18\] {
     opacity: 0.18;
+  }
+  .mix-blend-overlay {
+    mix-blend-mode: overlay;
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
@@ -1484,6 +1493,11 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-transform {
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -1506,6 +1520,15 @@
   }
   .\[animation-delay\:1\.5s\] {
     animation-delay: 1.5s;
+  }
+  .\[perspective\:1200px\] {
+    perspective: 1200px;
+  }
+  .\[perspective\:1400px\] {
+    perspective: 1400px;
+  }
+  .\[transform-style\:preserve-3d\] {
+    transform-style: preserve-3d;
   }
   @media (hover: hover) {
     .group-hover\:translate-x-1:is(:where(.group):hover *) {

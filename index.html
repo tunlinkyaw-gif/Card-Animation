@@ -16,10 +16,10 @@
     <div class="absolute right-[10%] bottom-[5%] size-[340px] rounded-full bg-[#818cf8] opacity-[0.18] blur-[90px] animate-[drift_10s_ease-in-out_infinite_alternate] [animation-delay:-5s]"></div>
   </div>
 
-  <main class="flex min-h-screen items-center justify-center p-6">
-    <article class="relative w-full max-w-[360px]">
-      <div class="absolute -inset-px rounded-[2rem] bg-[linear-gradient(160deg,#5eead4_0%,#334155_42%,#6366f1_100%)] opacity-80 blur-[1px]"></div>
+  <main class="flex min-h-screen items-center justify-center p-6 [perspective:1200px]">
+    <article id="profile-card" class="profile-card relative w-full max-w-[360px] cursor-pointer">
       <div class="relative overflow-hidden rounded-[2rem] p-[1.5px] shadow-[0_0_60px_rgba(45,212,191,0.12)]">
+        <div class="card-shine pointer-events-none absolute inset-0 z-20 rounded-[2rem] opacity-0 mix-blend-overlay transition-opacity duration-300"></div>
         <div class="pointer-events-none absolute top-1/2 left-1/2 h-[220%] w-[220%] -translate-x-1/2 -translate-y-1/2">
           <div class="h-full w-full animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,transparent_72%,#5eead4_100%)]"></div>
         </div>
@@ -97,5 +97,32 @@
       </div>
     </article>
   </main>
+  <script>
+    const card = document.getElementById("profile-card");
+    const shine = card.querySelector(".card-shine");
+
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+
+      card.style.setProperty("--rx", `${(0.5 - y) * 18}deg`);
+      card.style.setProperty("--ry", `${(x - 0.5) * 22}deg`);
+      card.style.setProperty("--mx", `${x * 100}%`);
+      card.style.setProperty("--my", `${y * 100}%`);
+      card.classList.add("is-hovering");
+      shine.style.opacity = "1";
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.setProperty("--rx", "0deg");
+      card.style.setProperty("--ry", "0deg");
+      card.classList.remove("is-hovering", "is-pressed");
+      shine.style.opacity = "0";
+    });
+
+    card.addEventListener("mousedown", () => card.classList.add("is-pressed"));
+    card.addEventListener("mouseup", () => card.classList.remove("is-pressed"));
+  </script>
 </body>
 </html>
